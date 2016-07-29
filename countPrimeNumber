@@ -1,0 +1,16 @@
+__author__ = 'yy'
+import math
+def primeNumber(m, n):
+    l = []
+    leap = 1
+    for i in range(m, n+1):
+        for j in range(2, int(math.sqrt(i)+1)):
+            if i % j == 0:
+                leap = 0
+                break
+        if leap == 1:
+            print i
+            l.append(i)
+        leap = 1
+    return len(l)
+print "Total numbers: %d" % primeNumber(2, 100)
