@@ -1,0 +1,26 @@
+__author__ = 'yy'
+import sys
+while True:
+    a = raw_input("Enter a integer number: ").strip()
+    if a == 'quit':break
+    if len(a) == 0:continue
+    if not a.isdigit():
+        print "Please enter a integer number!"
+        continue
+    num = int(a)
+    if num < 2:
+        print "Can not less than 2!"
+        continue
+    sys.stdout.write("%s = " % num)
+    for i in range(2, num+1):
+        if num != i:
+            while (num % i) != 0:
+                num /= i
+                sys.stdout.write(str(i))
+                if num == 1:
+                    print ""
+                    break
+                sys.stdout.write("*")
+        else:
+            print num
+            break
