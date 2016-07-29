@@ -1,0 +1,18 @@
+__author__ = 'yy'
+
+year = int(raw_input("year: "))
+month = int(raw_input("month: "))
+day = int(raw_input("day: "))
+months = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]
+if 0 < month <= 12 and 0 < day <= 31:
+    sumMonths = months[month-1]
+    sumDays = sumMonths + day
+else:
+    print "Error"
+if (year % 4 != 0) or (year % 100 == 0 and year % 400 != 0):
+    print "It's is the %dth day" % sumDays
+else:
+    if month >= 3:
+        print "It's is the %dth day" % (sumDays+1)
+    else:
+        print "It's is the %dth day" % sumDays
