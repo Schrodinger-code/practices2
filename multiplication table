@@ -1,0 +1,7 @@
+for i in range(1, 10):
+    for j in range(1, 10):
+        k = i * j
+        print "%s X %s = %d" % (i, j, k)
+        # or
+        #print i, "X", j, "=", k
+    print '\n'
