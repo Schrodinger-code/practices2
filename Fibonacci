@@ -1,0 +1,28 @@
+def fib(n):
+    if n == 1:
+        print [0]
+    elif n == 2:
+        print [0, 1]
+    else:
+        l = [0, 1]
+        for i in range(3, n+1):
+            j = l[-1] + l[-2]
+            l.append(j)
+        print l
+        
+################################  or
+def fib(n):
+    if n == 1:
+        fibList = [0]
+        print fibList
+    elif n ==2:
+        fibList = [0, 1]
+        print fibList
+    else:
+        fibList = [0, 1]
+        for i in range(2, n):
+            fibList.append(fibList[i-2]+fibList[i-1])
+        print fibList
+
+n = int(raw_input("How many number do you want: ").strip())
+fib(n)
