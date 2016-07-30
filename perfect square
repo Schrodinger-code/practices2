@@ -1,0 +1,9 @@
+import math
+def checkNum(m):
+    for num in range(m):
+        x = int(math.sqrt(num + 100)
+        y = int(math.sqrt(num + 268)
+        if ((num + 100) == (x ** 2)) and ((num + 268) == (y ** 2)):
+            print num
+m = int(raw_input("Input the range: ").strip())
+checkNum(m)
