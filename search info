@@ -1,0 +1,107 @@
+#info.txt
+wangzhiming 13328769716 microsoft wzm@microsoft.com
+suxiaoqi 13806062124 google sxq@google.com
+caijianjun 15880205277 apple cjj@apple.com
+huangjiyu 13400635289 alibaba hjy@alibaba.com
+zhangweisheng 13860448866 tencent zws@qq.com
+liujindong 15980816308 baidu ljd@baidu.com
+lixiaojuan 13959259425 jd lxj@jd.com
+huangmiaoyun 13779924218 360 hmy@360.com
+#######################################
+__author__ = 'yy'
+import sys
+while True:
+    File = open("info.txt", "r")
+    keyWord = raw_input("Search info: ")
+    if keyWord == "quit":
+        sys.exit("Exit!")
+    count = 0
+    for line in File:
+        while keyWord in line:
+            lineList = line.split(keyWord)
+            lenth = len(lineList)
+            for num in range(lenth):
+                if num < (lenth-1):
+                    sys.stdout.write(lineList[num])
+                    sys.stdout.write(("\033[31;1m%s\033[0m" % keyWord))
+                else:
+                    sys.stdout.write(lineList[num])
+            #print line
+            count += 1
+            break
+    if count == 0:
+        print "No value match"
+    else:
+        print "Found %s matched" % count
+    File.close()
+    
+##############################################
+    import sys
+while True:
+    File = open("info.txt", "r")
+    keyWord = raw_input("Search info: ").strip()
+    if len(keyWord) == 0:continue
+    if keyWord == "quit":break
+    count = 0
+    for line in File:
+        newLineList = []
+        if keyWord in line:
+            lineList = line.split(keyWord)
+            lenth = len(lineList)
+            for num in range(lenth):
+                #if num <= (lenth-1):
+                newLineList.append(lineList[num])
+                if num == (lenth-1):break
+                newLineList.append(("\033[31;1m%s\033[0m" % keyWord))
+#                else:
+#                    newLineList.append(("\033[31;1m%s\033[0m" % keyWord))
+#                    newLineList.append(lineList[num])
+            line = ''.join(newLineList)
+            #print line
+            sys.stdout.write(line)
+            count += 1
+    if count == 0:
+        print "No value match"
+    else:
+        print "Found %s matched" % count
+    File.close()
+########################################################
+#info2.txt
+stu1001 wangzhiming 13328769716 microsoft wzm@microsoft.com
+stu1002 suxiaoqi 13806062124 google sxq@google.com
+stu1003 caijianjun 15880205277 apple cjj@apple.com
+stu1004 huangjiyu 13400635289 alibaba hjy@alibaba.com
+stu1005 zhangweisheng 13860448866 tencent zws@qq.com
+stu1006 liujindong 15980816308 baidu ljd@baidu.com
+stu1007 lixiaojuan 13959259425 jd lxj@jd.com
+stu1008 huangmiaoyun 13779924218 360 hmy@360.com
+#######################################################
+File = file("info2.txt")
+stu_dic = {}
+for line in File.xreadlines():
+    line = line.split()
+    vaule = line[1:]
+    stu_dic[line[0]] = vaule
+
+while True:
+    keyWord = raw_input("Search info: ").strip()
+    if len(keyWord) == 0:continue
+    if keyWord == "quit":break
+    count = 0
+    for k, v in stu_dic.items():
+        str_v = ' '.join(v)
+        index = k.find(keyWord)
+        if index != -1:
+            print k[:index] + ("\033[36;1m%s\033[0m" % keyWord) + k[index+len(keyWord):], str_v
+            count += 1
+        else:
+            index = str_v.find(keyWord)
+            if index != -1:
+                print k, str_v[:index] + ("\033[36;1m%s\033[0m" % keyWord) + str_v[index+len(keyWord):]
+                count += 1
+
+    if count == 0:
+        print "No value match"
+    else:
+        print "Found %s matched" % count
+File.close()
